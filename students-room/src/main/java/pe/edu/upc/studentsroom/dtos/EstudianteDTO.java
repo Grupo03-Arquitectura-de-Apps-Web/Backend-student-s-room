@@ -1,38 +1,15 @@
-package pe.edu.upc.studentsroom.entities;
+package pe.edu.upc.studentsroom.dtos;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.time.LocalDate;
 
-@Entity
-@Table(name="estudiante")
-public class Estudiante {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EstudianteDTO {
+
     private int idEstudiante;
-
-    @Column(name="nombre", length = 30, nullable = false)
     private String nombre;
-
-    @Column(name="correo_institucional", length = 30, nullable = false)
     private String correo_institucional;
-
-    @Column(name="fecha_nacimiento", nullable = false)
     private LocalDate fecha_nacimiento;
-
-    @Column(name="telefono", length = 30, nullable = false)
     private String telefono;
-
-    public Estudiante() {
-    }
-
-    public Estudiante(int idEstudiante, String nombre, String correo_institucional, LocalDate fecha_nacimiento, String telefono) {
-        this.idEstudiante = idEstudiante;
-        this.nombre = nombre;
-        this.correo_institucional = correo_institucional;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.telefono = telefono;
-    }
 
     public int getIdEstudiante() {
         return idEstudiante;

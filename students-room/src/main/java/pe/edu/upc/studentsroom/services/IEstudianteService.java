@@ -1,5 +1,6 @@
-package pe.edu.upc.studentsroom.services;
 
+package pe.edu.upc.studentsroom.services;
+import org.springframework.stereotype.Service;
 import pe.edu.upc.studentsroom.entities.Estudiante;
 
 import java.util.List;
