@@ -1,10 +1,9 @@
 package pe.edu.upc.studentsroom.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "tipo_habitacion")
 public class TipoHabitacion {
 
     @Id
