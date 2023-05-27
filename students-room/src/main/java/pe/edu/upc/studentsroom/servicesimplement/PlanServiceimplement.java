@@ -24,4 +24,14 @@ public class PlanServiceimplement implements IPlanService {
     public List<Plan> list() {
         return pR.findAll();
     }
+
+    @Override
+    public void delete(int idPlan) {
+        pR.deleteById(idPlan);
+    }
+
+    @Override
+    public Plan listId(int idPlan) {
+        return pR.findById(idPlan).orElse(new Plan());
+    }
 }

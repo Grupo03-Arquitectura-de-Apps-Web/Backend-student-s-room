@@ -31,4 +31,22 @@ public class PlanController {
             return m.map(x,PlanDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        pS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public PlanDTO listId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        PlanDTO dto=m.map(pS.listId(id),PlanDTO.class);
+        return dto;
+    }
+    @PutMapping
+    public void update(@RequestBody PlanDTO dto) {
+        ModelMapper m = new ModelMapper();
+        Plan p = m.map(dto, Plan.class);
+        pS.insert(p);
+    }
 }
