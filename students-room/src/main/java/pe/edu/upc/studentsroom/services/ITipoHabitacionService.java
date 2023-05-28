@@ -7,4 +7,6 @@ import java.util.List;
 public interface ITipoHabitacionService {
     public void insert(TipoHabitacion tipoHabitacion);
     List<TipoHabitacion> list();
+    public void delete(int idTipoHabitacion);
+    public TipoHabitacion listId(int idTipoHabitacion);
 }
