@@ -22,8 +22,8 @@ public class EstudianteController {
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
         eS.insert(e);
-
     }
+
     @GetMapping
     public List<EstudianteDTO> list(){
         return eS.list().stream().map(x->{
@@ -42,5 +42,12 @@ public class EstudianteController {
         ModelMapper m=new ModelMapper();
         EstudianteDTO dto=m.map(eS.listId(id),EstudianteDTO.class);
         return dto;
+    }
+
+    @PutMapping
+    public void update (@RequestBody EstudianteDTO dto){
+        ModelMapper m=new ModelMapper();
+        Estudiante e=m.map(dto,Estudiante.class);
+        eS.insert(e);
     }
 }
