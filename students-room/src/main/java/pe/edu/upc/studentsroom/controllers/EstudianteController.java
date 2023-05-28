@@ -36,4 +36,11 @@ public class EstudianteController {
     public void delete(@PathVariable("id")Integer id){
         eS.delete(id);
     }
+
+    @GetMapping("/{id}")
+    public EstudianteDTO listId(@PathVariable("id")Integer id){
+        ModelMapper m=new ModelMapper();
+        EstudianteDTO dto=m.map(eS.listId(id),EstudianteDTO.class);
+        return dto;
+    }
 }
