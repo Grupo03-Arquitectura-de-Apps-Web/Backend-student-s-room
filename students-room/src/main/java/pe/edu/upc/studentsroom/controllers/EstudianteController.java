@@ -31,4 +31,9 @@ public class EstudianteController {
             return m.map(x,EstudianteDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id")Integer id){
+        eS.delete(id);
+    }
 }

@@ -23,4 +23,9 @@ public class EstudianteServiceImplement implements IEstudianteService {
     public List<Estudiante> list() {
         return eR.findAll();
     }
+
+    @Override
+    public void delete(int idEstudiante) {
+        eR.deleteById(idEstudiante);
+    }
 }
