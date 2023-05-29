@@ -22,4 +22,14 @@ public class PaisServiceImplement implements IPaisService {
         return psR.findAll();
     }
 
+    @Override
+    public void delete(int idPais) {
+        psR.deleteById(idPais);
+    }
+
+    @Override
+    public Pais listId(int idPais) {
+        return psR.findById(idPais).orElse(new Pais());
+    }
+
 }
