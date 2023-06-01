@@ -9,4 +9,6 @@ public interface IPlanService {
     List<Plan> list();
     public void delete(int idPlan);
     public Plan listId(int idPlan);
+    List<Plan> buscarPlan(String nombre_plan);
+    public int contador();
 }

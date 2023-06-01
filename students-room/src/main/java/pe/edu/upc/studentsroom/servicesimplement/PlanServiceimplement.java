@@ -34,4 +34,14 @@ public class PlanServiceimplement implements IPlanService {
     public Plan listId(int idPlan) {
         return pR.findById(idPlan).orElse(new Plan());
     }
+
+    @Override
+    public List<Plan> buscarPlan(String nombre_plan) {
+        return pR.buscarPlan(nombre_plan);
+    }
+
+    @Override
+    public int contador() {
+        return pR.contador();
+    }
 }
