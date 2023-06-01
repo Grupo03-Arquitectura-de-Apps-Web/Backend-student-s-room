@@ -46,4 +46,17 @@ public class TipoHabitacionController {
         TipoHabitacion p = m.map(dto, TipoHabitacion.class);
         pS.insert(p);
     }
+
+    @PostMapping("/buscador")
+    public List<TipoHabitacionDTO> BuscarTipoHabitacion(@RequestBody String tipo) {
+        return pS.buscarTipoHabitacion(tipo).stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x,TipoHabitacionDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/contador")
+    public int contadorPorTipoHabitacion(){
+        return pS.contadorPorTipoHabitacion();
+    }
 }
