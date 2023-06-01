@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.PlanDTO;
+import pe.edu.upc.studentsroom.dtos.TipoHabitacionDTO;
 import pe.edu.upc.studentsroom.entities.Plan;
 import pe.edu.upc.studentsroom.services.IPlanService;
 
@@ -48,5 +49,18 @@ public class PlanController {
         ModelMapper m = new ModelMapper();
         Plan p = m.map(dto, Plan.class);
         pS.insert(p);
+    }
+
+    @PostMapping("/buscador")
+    public List<PlanDTO> BuscarPlan(@RequestBody String nombre_plan) {
+        return pS.buscarPlan(nombre_plan).stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x,PlanDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/contador")
+    public int contador(){
+        return pS.contador();
     }
 }
