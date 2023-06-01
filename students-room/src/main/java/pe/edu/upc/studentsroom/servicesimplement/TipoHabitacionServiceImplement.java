@@ -33,4 +33,14 @@ public class TipoHabitacionServiceImplement implements ITipoHabitacionService {
     public TipoHabitacion listId(int idTipoHabitacion) {
         return null;
     }
+
+    @Override
+    public List<TipoHabitacion> buscarTipoHabitacion(String tipo) {
+        return pR.buscarTipoHabitacion(tipo);
+    }
+
+    @Override
+    public int contadorPorTipoHabitacion() {
+        return pR.contadorPorTipoHabitacion();
+    }
 }

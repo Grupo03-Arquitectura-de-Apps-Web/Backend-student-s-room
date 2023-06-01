@@ -9,4 +9,6 @@ public interface ITipoHabitacionService {
     List<TipoHabitacion> list();
     public void delete(int idTipoHabitacion);
     public TipoHabitacion listId(int idTipoHabitacion);
+    List<TipoHabitacion> buscarTipoHabitacion(String tipo);
+    public int contadorPorTipoHabitacion();
 }
