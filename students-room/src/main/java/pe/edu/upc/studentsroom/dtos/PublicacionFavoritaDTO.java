@@ -1,6 +1,7 @@
 package pe.edu.upc.studentsroom.dtos;
 
 import pe.edu.upc.studentsroom.entities.Estudiante;
+import pe.edu.upc.studentsroom.entities.Publicacion;
 
 import java.time.LocalDate;
 
@@ -9,6 +10,8 @@ public class PublicacionFavoritaDTO {
     private int id_publicacion_favorita;
     private LocalDate fecha_guardado;
     private Estudiante estudiante;
+
+    private Publicacion publicacion;
 
     public int getId_publicacion_favorita() {
         return id_publicacion_favorita;
@@ -32,5 +35,13 @@ public class PublicacionFavoritaDTO {
 
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
+    }
+
+    public Publicacion getPublicacion() {
+        return publicacion;
+    }
+
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
     }
 }

@@ -17,13 +17,18 @@ public class Publicación_Favorita {
     @JoinColumn(name = "idEstudiante")
     private Estudiante estudiante;
 
+    @ManyToOne
+    @JoinColumn(name = "idPublicacion")
+    private Publicacion publicacion;
+
     public Publicación_Favorita() {
     }
 
-    public Publicación_Favorita(int id_publicacion_favorita, LocalDate fecha_guardado, Estudiante estudiante) {
+    public Publicación_Favorita(int id_publicacion_favorita, LocalDate fecha_guardado, Estudiante estudiante, Publicacion publicacion) {
         this.id_publicacion_favorita = id_publicacion_favorita;
         this.fecha_guardado = fecha_guardado;
         this.estudiante = estudiante;
+        this.publicacion = publicacion;
     }
 
     public int getId_publicacion_favorita() {
@@ -48,5 +53,13 @@ public class Publicación_Favorita {
 
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
+    }
+
+    public Publicacion getPublicacion() {
+        return publicacion;
+    }
+
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
     }
 }
