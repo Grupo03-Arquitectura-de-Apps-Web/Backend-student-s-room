@@ -34,13 +34,14 @@ public class UniversidadController {
         }).collect(Collectors.toList());
     }
 
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Integer id) {
         pS.delete(id);
     }
 
     @GetMapping("/{id}")
-    public UniversidadDTO listId(@PathVariable("id") Integer id) {
+    public UniversidadDTO listID(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         UniversidadDTO dto=m.map(pS.listId(id),UniversidadDTO.class);
         return dto;

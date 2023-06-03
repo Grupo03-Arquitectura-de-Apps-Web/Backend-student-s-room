@@ -3,6 +3,7 @@ package pe.edu.upc.studentsroom.servicesimplement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.studentsroom.entities.Plan;
 import pe.edu.upc.studentsroom.entities.TipoHabitacion;
 import pe.edu.upc.studentsroom.entities.Universidad;
 import pe.edu.upc.studentsroom.repositories.IUniversidadRepository;
@@ -17,22 +18,17 @@ public class UniversidadServiceImplement implements IUniversidadService {
 
 
     @Override
-    public void insert(Universidad universidad) {
-    }
+    public void insert(Universidad universidad) {pR.save(universidad);}
 
     @Override
-    public List<Universidad> list() {
-        return null;
-    }
+    public List<Universidad> list() {return pR.findAll();}
 
     @Override
-    public void delete(int idUniversidad) {
-
-    }
+    public void delete(int idUniversidad) {pR.deleteById(idUniversidad);}
 
     @Override
     public Universidad listId(int idUniversidad) {
-        return null;
+        return pR.findById(idUniversidad).orElse(new Universidad());
     }
 }
 
