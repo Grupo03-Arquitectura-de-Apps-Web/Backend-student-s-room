@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.ArrendadorDTO;
+import pe.edu.upc.studentsroom.dtos.CiudadDTO;
 import pe.edu.upc.studentsroom.entities.Arrendador;
 import pe.edu.upc.studentsroom.services.IArrendadorService;
 
@@ -29,6 +30,12 @@ public class ArrendadorController {
             ModelMapper m = new ModelMapper();
             return m.map(x, ArrendadorDTO.class);
         }).collect(Collectors.toList());
+    }
+    @GetMapping("/{id}")
+    public ArrendadorDTO listId(@PathVariable("id")Integer id){
+        ModelMapper m=new ModelMapper();
+        ArrendadorDTO dto=m.map(aS.listId(id),ArrendadorDTO.class);
+        return dto;
     }
 
     @DeleteMapping("/{id}")

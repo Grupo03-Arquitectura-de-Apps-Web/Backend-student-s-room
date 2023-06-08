@@ -31,4 +31,14 @@ public class HabitacionServiceImplement implements IHabitacionService {
     public Habitacion listId(int idHabitacion) {
         return hR.findById(idHabitacion).orElse(new Habitacion());
     }
+
+    @Override
+    public List<Habitacion> habitacionesEntrePrecios(float p1, float p2) {
+        return hR.habitacionEntrePrecios(p1,p2);
+    }
+
+    @Override
+    public List<Habitacion> habitacionesDisponibles() {
+        return hR.habitacionesdisponibles();
+    }
 }

@@ -13,4 +13,8 @@ public interface IHabitacionService {
 
     public Habitacion listId(int idHabitacion);
 
+    List<Habitacion>habitacionesEntrePrecios(float p1, float p2);
+
+    List<Habitacion>habitacionesDisponibles();
+
 }

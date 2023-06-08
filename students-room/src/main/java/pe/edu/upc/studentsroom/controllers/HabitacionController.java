@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.ArrendadorDTO;
+import pe.edu.upc.studentsroom.dtos.DisponiblesDTO;
 import pe.edu.upc.studentsroom.dtos.EstudianteDTO;
 import pe.edu.upc.studentsroom.dtos.HabitacionDTO;
 import pe.edu.upc.studentsroom.entities.Arrendador;
@@ -50,5 +51,20 @@ public class HabitacionController {
         ModelMapper m = new ModelMapper();
         Habitacion a = m.map(dto, Habitacion.class);
         hS.insert(a);
+    }
+
+    @GetMapping("/{precioI}/{precioF}")
+    public List<HabitacionDTO> habitacionesEntrePrecios(@PathVariable("precioI")float p1,@PathVariable("precioF") float p2){
+        return hS.habitacionesEntrePrecios(p1,p2).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, HabitacionDTO.class);
+        }).collect(Collectors.toList());
+    }
+    @GetMapping("/disponibles")
+    public List<DisponiblesDTO> habitacionesDisponibles() {
+        return hS.habitacionesDisponibles().stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, DisponiblesDTO.class);
+        }).collect(Collectors.toList());
     }
 }
