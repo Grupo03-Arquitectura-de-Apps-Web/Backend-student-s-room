@@ -2,9 +2,9 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.ArrendadorDTO;
-import pe.edu.upc.studentsroom.dtos.CiudadDTO;
 import pe.edu.upc.studentsroom.entities.Arrendador;
 import pe.edu.upc.studentsroom.services.IArrendadorService;
 
@@ -18,13 +18,14 @@ public class ArrendadorController {
     private IArrendadorService aS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ARRENDADOR')")
     public void insert(@RequestBody ArrendadorDTO dto) {
         ModelMapper m = new ModelMapper();
         Arrendador a = m.map(dto, Arrendador.class);
         aS.insert(a);
     }
-
     @GetMapping
+    @PreAuthorize("hasAuthority('ARRENDADOR')")
     public List<ArrendadorDTO> list() {
         return aS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
