@@ -2,6 +2,7 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.PublicacionDTO;
 import pe.edu.upc.studentsroom.entities.Publicacion;
@@ -18,6 +19,7 @@ public class PublicacionController {
     @Autowired
     private IPublicacionService pS;
     @PostMapping
+    @PreAuthorize("hasAuthority('PUBLICACION')")
     public void insert (@RequestBody PublicacionDTO dto){
         ModelMapper m=new ModelMapper();
         Publicacion e=m.map(dto,Publicacion.class);
@@ -25,6 +27,7 @@ public class PublicacionController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('PUBLICACION')")
     public List<PublicacionDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();

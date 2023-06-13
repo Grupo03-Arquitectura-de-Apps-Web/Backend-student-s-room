@@ -2,6 +2,7 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.DistritoDTO;
 import pe.edu.upc.studentsroom.dtos.HabitacionDTO;
@@ -20,6 +21,7 @@ public class DistritoController {
     private IDistritoService dS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('DISTRITO')")
     public void insert(@RequestBody DistritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Distrito v = m.map(dto, Distrito.class);
@@ -27,6 +29,7 @@ public class DistritoController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('PUBLICACION')")
     public List<DistritoDTO> list() {
         return dS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();

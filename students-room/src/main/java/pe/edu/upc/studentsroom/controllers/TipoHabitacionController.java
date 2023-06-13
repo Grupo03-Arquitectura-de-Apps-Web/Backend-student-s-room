@@ -2,6 +2,7 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.TipoHabitacionDTO;
 import pe.edu.upc.studentsroom.entities.TipoHabitacion;
@@ -17,12 +18,14 @@ public class TipoHabitacionController {
     private ITipoHabitacionService pS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('TIPOHABITACION')")
     public void insert(@RequestBody TipoHabitacionDTO dto){
         ModelMapper m=new ModelMapper();
         TipoHabitacion p=m.map(dto,TipoHabitacion.class);
         pS.insert(p);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('TIPOHABITACION')")
     public List<TipoHabitacionDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
