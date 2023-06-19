@@ -11,7 +11,7 @@ public class TipoHabitacion {
     private int idTipoHabitacion;
     @Column(name = "tipo", length = 40, nullable = false)
     private String tipo;
-    @Column(name = "descripcion",length = 200, nullable = false)
+    @Column(name = "descripcion",length = 500, nullable = false)
     private String descripcion;
 
     public TipoHabitacion() {}
