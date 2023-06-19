@@ -21,7 +21,6 @@ public class DistritoController {
     private IDistritoService dS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('DISTRITO')")
     public void insert(@RequestBody DistritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Distrito v = m.map(dto, Distrito.class);
@@ -29,7 +28,6 @@ public class DistritoController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('PUBLICACION')")
     public List<DistritoDTO> list() {
         return dS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();

@@ -19,7 +19,6 @@ public class PublicacionController {
     @Autowired
     private IPublicacionService pS;
     @PostMapping
-    @PreAuthorize("hasAuthority('PUBLICACION')")
     public void insert (@RequestBody PublicacionDTO dto){
         ModelMapper m=new ModelMapper();
         Publicacion e=m.map(dto,Publicacion.class);
@@ -27,7 +26,6 @@ public class PublicacionController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('PUBLICACION')")
     public List<PublicacionDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
