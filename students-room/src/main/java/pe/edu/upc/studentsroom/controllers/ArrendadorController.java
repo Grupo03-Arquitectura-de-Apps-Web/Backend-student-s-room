@@ -18,14 +18,14 @@ public class ArrendadorController {
     private IArrendadorService aS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ARRENDADOR')")
+
     public void insert(@RequestBody ArrendadorDTO dto) {
         ModelMapper m = new ModelMapper();
         Arrendador a = m.map(dto, Arrendador.class);
         aS.insert(a);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ARRENDADOR')")
+
     public List<ArrendadorDTO> list() {
         return aS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
