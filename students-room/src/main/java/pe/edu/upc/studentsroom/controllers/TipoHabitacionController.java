@@ -18,14 +18,12 @@ public class TipoHabitacionController {
     private ITipoHabitacionService pS;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('TIPOHABITACION')")
     public void insert(@RequestBody TipoHabitacionDTO dto){
         ModelMapper m=new ModelMapper();
         TipoHabitacion p=m.map(dto,TipoHabitacion.class);
         pS.insert(p);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('TIPOHABITACION')")
     public List<TipoHabitacionDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();

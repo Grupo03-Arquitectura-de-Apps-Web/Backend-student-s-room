@@ -26,12 +26,12 @@ public class TipoHabitacionServiceImplement implements ITipoHabitacionService {
 
     @Override
     public void delete(int idTipoHabitacion) {
-
+        pR.deleteById(idTipoHabitacion);
     }
 
     @Override
     public TipoHabitacion listId(int idTipoHabitacion) {
-        return null;
+        return pR.findById(idTipoHabitacion).orElse(new TipoHabitacion());
     }
 
     @Override
