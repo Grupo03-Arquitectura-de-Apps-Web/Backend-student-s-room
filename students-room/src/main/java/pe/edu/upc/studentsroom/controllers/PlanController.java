@@ -2,10 +2,9 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.PlanDTO;
-import pe.edu.upc.studentsroom.dtos.TipoHabitacionDTO;
 import pe.edu.upc.studentsroom.entities.Plan;
 import pe.edu.upc.studentsroom.services.IPlanService;
 
@@ -18,7 +17,9 @@ public class PlanController {
     //Para acceder a los metodos de service desde esta clase
     @Autowired
     private IPlanService pS;
+
     @PostMapping//Hace que se alinee con el front para el intercambio de datos
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insert(@RequestBody PlanDTO dto){
         ModelMapper m=new ModelMapper();
         Plan p=m.map(dto,Plan.class);
@@ -26,6 +27,7 @@ public class PlanController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public List<PlanDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -34,17 +36,20 @@ public class PlanController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable("id") Integer id) {
         pS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public PlanDTO listId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         PlanDTO dto=m.map(pS.listId(id),PlanDTO.class);
         return dto;
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void update(@RequestBody PlanDTO dto) {
         ModelMapper m = new ModelMapper();
         Plan p = m.map(dto, Plan.class);
@@ -52,6 +57,7 @@ public class PlanController {
     }
 
     @PostMapping("/buscador")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<PlanDTO> BuscarPlan(@RequestBody String nombre_plan) {
         return pS.buscarPlan(nombre_plan).stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -60,6 +66,7 @@ public class PlanController {
     }
 
     @GetMapping("/contador")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public int contador(){
         return pS.contador();
     }
