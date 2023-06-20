@@ -10,30 +10,30 @@ public class Habitacion {
     private int idHabitacion;
 
     @ManyToOne
-    @JoinColumn(name = "idTipoHabitacion")
+    @JoinColumn(name = "Tipo", nullable = false)
     private TipoHabitacion tipoHabitacion;
-    @Column(name = "precioHabitacion",nullable = false)
+    @Column(name = "Precio",length =10,nullable = false)
     private float precioHabitacion;
-    @Column(name = "disponibilidadHabitacion",nullable = false)
-    private boolean disponibilidadHabitacion;
+    @Column(name = "Disponibilidad",nullable = false)
+    private String disponibilidadHabitacion;
 
     @ManyToOne
-    @JoinColumn(name = "idArrendador")
+    @JoinColumn(name = "Arrendador", nullable = false)
     private Arrendador arrendador;
 
     @ManyToOne
-    @JoinColumn(name = "idDistrito")
+    @JoinColumn(name = "Distrito", nullable = false)
     private Distrito distrito;
 
     @ManyToOne
-    @JoinColumn(name = "idUniversidad")
+    @JoinColumn(name = "Universidad", nullable = false)
     private Universidad universidad;
 
     public Habitacion(){
 
     }
 
-    public Habitacion(int idHabitacion, TipoHabitacion tipoHabitacion, float precioHabitacion, boolean disponibilidadHabitacion, Arrendador arrendador, Distrito distrito, Universidad universidad) {
+    public Habitacion(int idHabitacion, TipoHabitacion tipoHabitacion, float precioHabitacion, String disponibilidadHabitacion, Arrendador arrendador, Distrito distrito, Universidad universidad) {
         this.idHabitacion = idHabitacion;
         this.tipoHabitacion = tipoHabitacion;
         this.precioHabitacion = precioHabitacion;
@@ -67,11 +67,11 @@ public class Habitacion {
         this.precioHabitacion = precioHabitacion;
     }
 
-    public boolean isDisponibilidadHabitacion() {
+    public String getDisponibilidadHabitacion() {
         return disponibilidadHabitacion;
     }
 
-    public void setDisponibilidadHabitacion(boolean disponibilidadHabitacion) {
+    public void setDisponibilidadHabitacion(String disponibilidadHabitacion) {
         this.disponibilidadHabitacion = disponibilidadHabitacion;
     }
 

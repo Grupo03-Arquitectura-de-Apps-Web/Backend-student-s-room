@@ -14,7 +14,7 @@ public class HabitacionDTO {
 
     private TipoHabitacion tipoHabitacion;
     private float precioHabitacion;
-    private boolean disponibilidadHabitacion;
+    private String disponibilidadHabitacion;
 
 
     private Arrendador arrendador;
@@ -48,11 +48,11 @@ public class HabitacionDTO {
         this.precioHabitacion = precioHabitacion;
     }
 
-    public boolean isDisponibilidadHabitacion() {
+    public String getDisponibilidadHabitacion() {
         return disponibilidadHabitacion;
     }
 
-    public void setDisponibilidadHabitacion(boolean disponibilidadHabitacion) {
+    public void setDisponibilidadHabitacion(String disponibilidadHabitacion) {
         this.disponibilidadHabitacion = disponibilidadHabitacion;
     }
 

@@ -17,8 +17,8 @@ public interface IHabitacionRepository extends JpaRepository<Habitacion,Integer>
 
     //habitaciones disponibles y el distrito
     //@Query("SELECT h.distrito.ciudad.nombreCiudad,h.universidad.nombre, d.nombreDistrito FROM Habitacion h JOIN Distrito d ON h.distrito.idDistrito = d.idDistrito WHERE h.disponibilidadHabitacion = true")
-    @Query("SELECT th.descripcion,th.tipo,d.nombreDistrito,u.nombre FROM Habitacion h JOIN Distrito d ON h.distrito.idDistrito = d.idDistrito JOIN Universidad u on h.universidad.idUniversidad=u.idUniversidad join TipoHabitacion th on h.tipoHabitacion.idTipoHabitacion=th.idTipoHabitacion where h.disponibilidadHabitacion = true")
+    //@Query("SELECT th.descripcion,th.tipo,d.nombreDistrito,u.nombre FROM Habitacion h JOIN Distrito d ON h.distrito.idDistrito = d.idDistrito JOIN Universidad u on h.universidad.idUniversidad=u.idUniversidad join TipoHabitacion th on h.tipoHabitacion.idTipoHabitacion=th.idTipoHabitacion where h.disponibilidadHabitacion = true")
     //@Query("SELECT h FROM Habitacion h JOIN Distrito d ON h.distrito.idDistrito = d.idDistrito JOIN Universidad u on h.universidad.idUniversidad=u.idUniversidad join TipoHabitacion th on h.tipoHabitacion.idTipoHabitacion=th.idTipoHabitacion where h.disponibilidadHabitacion = true")
 
-    List<Habitacion>habitacionesdisponibles();
+    //List<Habitacion>habitacionesdisponibles();
 }

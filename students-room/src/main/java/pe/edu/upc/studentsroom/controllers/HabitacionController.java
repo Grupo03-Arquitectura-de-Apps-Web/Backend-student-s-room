@@ -53,6 +53,7 @@ public class HabitacionController {
         hS.insert(a);
     }
 
+    /*
     @GetMapping("/{precioI}/{precioF}")
     public List<HabitacionDTO> habitacionesEntrePrecios(@PathVariable("precioI")float p1,@PathVariable("precioF") float p2){
         return hS.habitacionesEntrePrecios(p1,p2).stream().map(x -> {
@@ -66,5 +67,5 @@ public class HabitacionController {
             ModelMapper m = new ModelMapper();
             return m.map(x, DisponiblesDTO.class);
         }).collect(Collectors.toList());
-    }
+    }*/
 }
