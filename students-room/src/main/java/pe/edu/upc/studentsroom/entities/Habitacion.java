@@ -14,7 +14,7 @@ public class Habitacion {
     private TipoHabitacion tipoHabitacion;
     @Column(name = "Precio",length =10,nullable = false)
     private float precioHabitacion;
-    @Column(name = "Disponibilidad",nullable = false)
+    @Column(name = "Disponibilidad",length =10,nullable = false)
     private String disponibilidadHabitacion;
 
     @ManyToOne
