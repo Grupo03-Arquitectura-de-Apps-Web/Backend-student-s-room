@@ -9,24 +9,24 @@ public class Habitacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHabitacion;
 
-    @ManyToOne
-    @JoinColumn(name = "Tipo", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "id_Tipo", nullable = false)
     private TipoHabitacion tipoHabitacion;
     @Column(name = "Precio",length =10,nullable = false)
     private float precioHabitacion;
     @Column(name = "Disponibilidad",nullable = false)
     private String disponibilidadHabitacion;
 
-    @ManyToOne
-    @JoinColumn(name = "Arrendador", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "id_Arrendador", nullable = false)
     private Arrendador arrendador;
 
-    @ManyToOne
-    @JoinColumn(name = "Distrito", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "id_Distrito", nullable = false)
     private Distrito distrito;
 
-    @ManyToOne
-    @JoinColumn(name = "Universidad", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "id_Universidad", nullable = false)
     private Universidad universidad;
 
     public Habitacion(){
