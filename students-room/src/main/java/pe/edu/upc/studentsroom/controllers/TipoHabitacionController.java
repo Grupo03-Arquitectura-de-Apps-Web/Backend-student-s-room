@@ -18,12 +18,14 @@ public class TipoHabitacionController {
     private ITipoHabitacionService pS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public void insert(@RequestBody TipoHabitacionDTO dto){
         ModelMapper m=new ModelMapper();
         TipoHabitacion p=m.map(dto,TipoHabitacion.class);
         pS.insert(p);
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR') or hasAuthority('ESTUDIANTE')")
     public List<TipoHabitacionDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -31,17 +33,20 @@ public class TipoHabitacionController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public void delete(@PathVariable("id") Integer id) {
         pS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public TipoHabitacionDTO listId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         TipoHabitacionDTO dto=m.map(pS.listId(id),TipoHabitacionDTO.class);
         return dto;
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public void update(@RequestBody TipoHabitacionDTO dto) {
         ModelMapper m = new ModelMapper();
         TipoHabitacion p = m.map(dto, TipoHabitacion.class);
@@ -49,6 +54,7 @@ public class TipoHabitacionController {
     }
 
     @PostMapping("/buscador")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<TipoHabitacionDTO> BuscarTipoHabitacion(@RequestBody String tipo) {
         return pS.buscarTipoHabitacion(tipo).stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -57,6 +63,7 @@ public class TipoHabitacionController {
     }
 
     @GetMapping("/contador")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public int contadorPorTipoHabitacion(){
         return pS.contadorPorTipoHabitacion();
     }

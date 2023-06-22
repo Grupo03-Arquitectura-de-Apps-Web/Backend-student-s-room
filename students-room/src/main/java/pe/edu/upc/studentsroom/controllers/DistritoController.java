@@ -21,6 +21,7 @@ public class DistritoController {
     private IDistritoService dS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insert(@RequestBody DistritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Distrito v = m.map(dto, Distrito.class);
@@ -28,6 +29,7 @@ public class DistritoController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<DistritoDTO> list() {
         return dS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -36,17 +38,20 @@ public class DistritoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable("id")Integer id){
         dS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public DistritoDTO listId(@PathVariable("id")Integer id){
         ModelMapper m=new ModelMapper();
         DistritoDTO dto=m.map(dS.listId(id),DistritoDTO.class);
         return dto;
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void update(@RequestBody DistritoDTO dto) {
         ModelMapper m = new ModelMapper();
         Distrito a = m.map(dto, Distrito.class);
