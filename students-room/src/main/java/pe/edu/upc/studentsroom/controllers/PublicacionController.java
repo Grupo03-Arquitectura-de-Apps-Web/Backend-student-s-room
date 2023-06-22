@@ -19,6 +19,7 @@ public class PublicacionController {
     @Autowired
     private IPublicacionService pS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public void insert (@RequestBody PublicacionDTO dto){
         ModelMapper m=new ModelMapper();
         Publicacion e=m.map(dto,Publicacion.class);
@@ -26,6 +27,7 @@ public class PublicacionController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR') or hasAuthority('ESTUDIANTE')")
     public List<PublicacionDTO> list(){
         return pS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -34,11 +36,13 @@ public class PublicacionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public void delete(@PathVariable("id")Integer id){
         pS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public PublicacionDTO listId(@PathVariable("id")Integer id){
         ModelMapper m=new ModelMapper();
         PublicacionDTO dto=m.map(pS.listId(id),PublicacionDTO.class);
@@ -46,6 +50,7 @@ public class PublicacionController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('ARRENDADOR')")
     public void update (@RequestBody PublicacionDTO dto){
         ModelMapper m=new ModelMapper();
         Publicacion e=m.map(dto,Publicacion.class);

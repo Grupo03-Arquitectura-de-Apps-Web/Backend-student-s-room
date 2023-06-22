@@ -1,40 +1,44 @@
 package pe.edu.upc.studentsroom.dtos;
 
 public class DisponiblesDTO {
-    private String descripcion;
-    private String tipoHabi;
-    private String descripHabi;
-    private String nombreUni;
+    private String city;
+    private String district;
 
-    public String getDescripcion() {
-        return descripcion;
+    private int countDispo;
+
+    public DisponiblesDTO(String city, String district, int countDispo) {
+        this.city = city;
+        this.district = district;
+        this.countDispo = countDispo;
+    }
+    public DisponiblesDTO(){
+
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String getCity() {
+        return city;
     }
 
-    public String getTipoHabi() {
-        return tipoHabi;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setTipoHabi(String tipoHabi) {
-        this.tipoHabi = tipoHabi;
+    public String getDistrict() {
+        return district;
     }
 
-    public String getDescripHabi() {
-        return descripHabi;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public void setDescripHabi(String descripHabi) {
-        this.descripHabi = descripHabi;
+    public int getCountDispo() {
+        return countDispo;
     }
 
-    public String getNombreUni() {
-        return nombreUni;
+    public void setCountDispo(int countDispo) {
+        this.countDispo = countDispo;
     }
 
-    public void setNombreUni(String nombreUni) {
-        this.nombreUni = nombreUni;
-    }
+
+
 }
