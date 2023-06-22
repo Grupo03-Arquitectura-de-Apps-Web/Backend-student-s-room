@@ -20,6 +20,7 @@ public class HabitacionController {
     @Autowired
     private IHabitacionService hS;
 
+
     @PostMapping
     public void insert(@RequestBody HabitacionDTO dto) {
         ModelMapper m = new ModelMapper();

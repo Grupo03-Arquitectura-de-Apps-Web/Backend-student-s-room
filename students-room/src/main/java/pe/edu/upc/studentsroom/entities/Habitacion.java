@@ -11,11 +11,11 @@ public class Habitacion {
 
     @OneToOne
     @JoinColumn(name = "id_Tipo", nullable = false)
-    private TipoHabitacion tipoHabitacion;
-    @Column(name = "Precio",length =10,nullable = false)
-    private float precioHabitacion;
-    @Column(name = "Disponibilidad",length =10,nullable = false)
-    private String disponibilidadHabitacion;
+    private TipoHabitacion tipo;
+    @Column(name = "Precio", length = 10, nullable = false)
+    private float precio;
+    @Column(name = "Disponibilidad", length = 10, nullable = false)
+    private String disponibilidad;
 
     @OneToOne
     @JoinColumn(name = "id_Arrendador", nullable = false)
@@ -29,15 +29,15 @@ public class Habitacion {
     @JoinColumn(name = "id_Universidad", nullable = false)
     private Universidad universidad;
 
-    public Habitacion(){
+    public Habitacion() {
 
     }
 
-    public Habitacion(int idHabitacion, TipoHabitacion tipoHabitacion, float precioHabitacion, String disponibilidadHabitacion, Arrendador arrendador, Distrito distrito, Universidad universidad) {
+    public Habitacion(int idHabitacion, TipoHabitacion tipo, float precio, String disponibilidad, Arrendador arrendador, Distrito distrito, Universidad universidad) {
         this.idHabitacion = idHabitacion;
-        this.tipoHabitacion = tipoHabitacion;
-        this.precioHabitacion = precioHabitacion;
-        this.disponibilidadHabitacion = disponibilidadHabitacion;
+        this.tipo = tipo;
+        this.precio = precio;
+        this.disponibilidad = disponibilidad;
         this.arrendador = arrendador;
         this.distrito = distrito;
         this.universidad = universidad;
@@ -51,28 +51,28 @@ public class Habitacion {
         this.idHabitacion = idHabitacion;
     }
 
-    public TipoHabitacion getTipoHabitacion() {
-        return tipoHabitacion;
+    public TipoHabitacion getTipo() {
+        return tipo;
     }
 
-    public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
+    public void setTipo(TipoHabitacion tipo) {
+        this.tipo = tipo;
     }
 
-    public float getPrecioHabitacion() {
-        return precioHabitacion;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setPrecioHabitacion(float precioHabitacion) {
-        this.precioHabitacion = precioHabitacion;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
-    public String getDisponibilidadHabitacion() {
-        return disponibilidadHabitacion;
+    public String getDisponibilidad() {
+        return disponibilidad;
     }
 
-    public void setDisponibilidadHabitacion(String disponibilidadHabitacion) {
-        this.disponibilidadHabitacion = disponibilidadHabitacion;
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 
     public Arrendador getArrendador() {

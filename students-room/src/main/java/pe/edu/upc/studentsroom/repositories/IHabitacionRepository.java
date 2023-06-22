@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface IHabitacionRepository extends JpaRepository<Habitacion,Integer> {
     //buscar habitaciones entre precios
-    @Query("from Habitacion h where h.precioHabitacion between :precioI and :precioF")
+    @Query("from Habitacion h where h.precio between :precioI and :precioF")
     List<Habitacion> habitacionEntrePrecios(@Param("precioI") float precioI,@Param("precioF") float precioF);
 
     //habitaciones disponibles y el distrito
