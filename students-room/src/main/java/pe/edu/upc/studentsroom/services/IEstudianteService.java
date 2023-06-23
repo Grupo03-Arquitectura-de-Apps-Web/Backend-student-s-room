@@ -9,6 +9,8 @@ public interface IEstudianteService {
     public void insert(Estudiante estudiante);
     List<Estudiante> list();
 
+    List<Estudiante> findByCorreo(String busqueda);
+
     public void delete(int idEstudiante);
 
     public Estudiante listId(int idEstudiante);
