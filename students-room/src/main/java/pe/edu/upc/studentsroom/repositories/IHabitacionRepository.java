@@ -23,7 +23,7 @@ public interface IHabitacionRepository extends JpaRepository<Habitacion,Integer>
             "FROM habitaciones h " +
             "JOIN distritos d ON h.id_distrito = d.id_distrito " +
             "JOIN ciudades c ON d.id_ciudad = c.id_ciudad " +
-            "WHERE h.disponibilidad_habitacion = 'Sí' " +
+            "WHERE h.disponibilidad = 'Sí' " +
             "GROUP BY c.nombre_ciudad, d.nombre_distrito " +
             "ORDER BY count(d.nombre_distrito) DESC",
             nativeQuery = true)
