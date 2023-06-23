@@ -19,6 +19,7 @@ public class EstudianteController {
     @Autowired
     private IEstudianteService eS;
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public void insert (@RequestBody EstudianteDTO dto){
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
@@ -26,6 +27,7 @@ public class EstudianteController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<EstudianteDTO> list(){
         return eS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -34,11 +36,13 @@ public class EstudianteController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable("id")Integer id){
         eS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE')")
     public EstudianteDTO listId(@PathVariable("id")Integer id){
         ModelMapper m=new ModelMapper();
         EstudianteDTO dto=m.map(eS.listId(id),EstudianteDTO.class);
@@ -46,6 +50,7 @@ public class EstudianteController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE')")
     public void update (@RequestBody EstudianteDTO dto){
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
@@ -54,6 +59,7 @@ public class EstudianteController {
 
 
     @GetMapping("/buscador")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<EstudianteDTO> findByCorreo(@RequestParam("busqueda") String busqueda) {
         return eS.findByCorreo(busqueda).stream().map(x->{
             ModelMapper m = new ModelMapper();
