@@ -25,6 +25,11 @@ public class EstudianteServiceImplement implements IEstudianteService {
     }
 
     @Override
+    public List<Estudiante> findByCorreo(String busqueda) {
+        return eR.findByCorreo(busqueda );
+    }
+
+    @Override
     public void delete(int idEstudiante) {
         eR.deleteById(idEstudiante);
     }

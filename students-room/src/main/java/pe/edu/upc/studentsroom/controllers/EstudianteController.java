@@ -1,6 +1,7 @@
 package pe.edu.upc.studentsroom.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.EstudianteDTO;
 import pe.edu.upc.studentsroom.dtos.PlanDTO;
@@ -49,5 +50,14 @@ public class EstudianteController {
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
         eS.insert(e);
+    }
+
+
+    @GetMapping("/buscador")
+    public List<EstudianteDTO> findByCorreo(@RequestParam("busqueda") String busqueda) {
+        return eS.findByCorreo(busqueda).stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x,EstudianteDTO.class);
+        }).collect(Collectors.toList());
     }
 }
