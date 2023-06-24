@@ -25,6 +25,8 @@ public class Habitacion {
     @JoinColumn(name = "id_Distrito", nullable = false)
     private Distrito distrito;
 
+    @Column(name = "Ubicacion", length = 50, nullable = false)
+    private String ubicacion;
     @OneToOne
     @JoinColumn(name = "id_Universidad", nullable = false)
     private Universidad universidad;
@@ -33,13 +35,14 @@ public class Habitacion {
 
     }
 
-    public Habitacion(int idHabitacion, TipoHabitacion tipo, float precio, String disponibilidad, Arrendador arrendador, Distrito distrito, Universidad universidad) {
+    public Habitacion(int idHabitacion, TipoHabitacion tipo, float precio, String disponibilidad, Arrendador arrendador, Distrito distrito, String ubicacion, Universidad universidad) {
         this.idHabitacion = idHabitacion;
         this.tipo = tipo;
         this.precio = precio;
         this.disponibilidad = disponibilidad;
         this.arrendador = arrendador;
         this.distrito = distrito;
+        this.ubicacion = ubicacion;
         this.universidad = universidad;
     }
 
@@ -89,6 +92,14 @@ public class Habitacion {
 
     public void setDistrito(Distrito distrito) {
         this.distrito = distrito;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Universidad getUniversidad() {

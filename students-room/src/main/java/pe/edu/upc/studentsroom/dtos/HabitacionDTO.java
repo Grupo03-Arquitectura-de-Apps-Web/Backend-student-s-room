@@ -21,6 +21,7 @@ public class HabitacionDTO {
     private Arrendador arrendador;
 
     private Distrito distrito;
+    private String ubicacion;
 
     private Universidad universidad;
 
@@ -70,6 +71,14 @@ public class HabitacionDTO {
 
     public void setDistrito(Distrito distrito) {
         this.distrito = distrito;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Universidad getUniversidad() {
