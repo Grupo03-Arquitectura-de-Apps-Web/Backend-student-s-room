@@ -57,6 +57,7 @@ public class PlanController {
         pS.insert(p);
     }
     @GetMapping("/reporte09")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ArrendadorPorPlanDTO> ArrendadorPorPlan() {
         List<ArrendadorPorPlanDTO> ArrendadorPorPlanDTOs = pS.reporte09();
         return ArrendadorPorPlanDTOs;

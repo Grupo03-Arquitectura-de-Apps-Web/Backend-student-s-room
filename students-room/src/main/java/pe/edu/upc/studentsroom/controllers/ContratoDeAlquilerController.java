@@ -3,6 +3,7 @@ package pe.edu.upc.studentsroom.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.ContratoDeAlquilerDTO;
 import pe.edu.upc.studentsroom.dtos.HabitacionDTO;
@@ -55,6 +56,7 @@ public class ContratoDeAlquilerController {
         cdaS.insert(e);
     }
     @GetMapping("/{fechaI}/{fechaF}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ContratoDeAlquilerDTO> ContratosEntreFechas(@PathVariable("fechaI") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate f1, @PathVariable("fechaF") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate f2) {
         return cdaS.reporte10(f1, f2).stream().map(x -> {
             ModelMapper m = new ModelMapper();
