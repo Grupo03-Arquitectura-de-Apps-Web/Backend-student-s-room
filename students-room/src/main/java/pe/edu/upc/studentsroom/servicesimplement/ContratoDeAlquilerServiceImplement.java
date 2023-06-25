@@ -6,8 +6,14 @@ import pe.edu.upc.studentsroom.dtos.ClientesDeArrendadorDTO;
 import pe.edu.upc.studentsroom.entities.ContratoDeAlquiler;
 import pe.edu.upc.studentsroom.repositories.IContratoDeAlquilerRepository;
 import pe.edu.upc.studentsroom.services.IContratoDeAlquilerService;
+<<<<<<< HEAD
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+=======
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+>>>>>>> master
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +45,7 @@ public class ContratoDeAlquilerServiceImplement implements IContratoDeAlquilerSe
     }
 
     @Override
-    public List<ContratoDeAlquiler> reporte10(Date f1, Date f2) {
+    public List<ContratoDeAlquiler> reporte10(LocalDate f1, LocalDate f2) {
         return cdaR.ContratoEntreFechas(f1,f2);
     }
 

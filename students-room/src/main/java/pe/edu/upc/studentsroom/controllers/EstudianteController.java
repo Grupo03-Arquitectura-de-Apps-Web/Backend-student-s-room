@@ -70,6 +70,7 @@ public class EstudianteController {
     }
 
     @GetMapping("/reporte04")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<StudentMessageDTO> getCountMessagesPerStudent() {
         List<StudentMessageDTO> studentMessageDTOs = eS.reporte04();
         return studentMessageDTOs;

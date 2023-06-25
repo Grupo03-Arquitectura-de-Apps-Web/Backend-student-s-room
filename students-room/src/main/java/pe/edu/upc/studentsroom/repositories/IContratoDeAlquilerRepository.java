@@ -5,10 +5,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pe.edu.upc.studentsroom.entities.ContratoDeAlquiler;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public interface IContratoDeAlquilerRepository extends JpaRepository<ContratoDeAlquiler,Integer> {
+<<<<<<< HEAD
     @Query("from ContratoDeAlquiler h where h.fecha_inicio between :fechaI and :fechaF")
     List<ContratoDeAlquiler> ContratoEntreFechas(@Param("fechaI") Date fechaI, @Param("fechaF") Date fechaF);
 
@@ -20,4 +22,8 @@ public interface IContratoDeAlquilerRepository extends JpaRepository<ContratoDeA
             "WHERE a.nombre = :arrendador",nativeQuery = true)
 
     List<String[]> ClientesDeArrendador(@Param("arrendador") String arrendador);
+=======
+    @Query("from ContratoDeAlquiler h where h.fecha_inicio > :fechaI and h.fecha_vencimiento<:fechaF")
+    List<ContratoDeAlquiler> ContratoEntreFechas(@Param("fechaI") LocalDate fechaI, @Param("fechaF") LocalDate fechaF);
+>>>>>>> master
 }

@@ -3,12 +3,12 @@ package pe.edu.upc.studentsroom.dtos;
 public class ArrendadorPorPlanDTO {
     private String nombre_plan;
     private int precio;
-    private long id_arrendador;
+    private int id_arrendador;
 
     public ArrendadorPorPlanDTO() {
     }
 
-    public ArrendadorPorPlanDTO(String nombre_plan, int precio, long id_arrendador) {
+    public ArrendadorPorPlanDTO(String nombre_plan, int precio, int id_arrendador) {
         this.nombre_plan = nombre_plan;
         this.precio = precio;
         this.id_arrendador = id_arrendador;
@@ -34,7 +34,7 @@ public class ArrendadorPorPlanDTO {
         return id_arrendador;
     }
 
-    public void setId_arrendador(long id_arrendador) {
+    public void setId_arrendador(int id_arrendador) {
         this.id_arrendador = id_arrendador;
     }
 }

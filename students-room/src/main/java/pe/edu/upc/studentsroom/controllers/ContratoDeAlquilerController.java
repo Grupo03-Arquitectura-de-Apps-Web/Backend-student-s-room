@@ -2,13 +2,18 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.ClientesDeArrendadorDTO;
 import pe.edu.upc.studentsroom.dtos.ConteoxEstadoDTO;
 import pe.edu.upc.studentsroom.dtos.ContratoDeAlquilerDTO;
+import pe.edu.upc.studentsroom.dtos.HabitacionDTO;
 import pe.edu.upc.studentsroom.entities.ContratoDeAlquiler;
 import pe.edu.upc.studentsroom.services.IContratoDeAlquilerService;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +57,7 @@ public class ContratoDeAlquilerController {
         ContratoDeAlquiler e=m.map(dto,ContratoDeAlquiler.class);
         cdaS.insert(e);
     }
+<<<<<<< HEAD
 
     @GetMapping("/reporte07/{arrendador}")
     public List<ClientesDeArrendadorDTO> ClientesDeArrendador(@PathVariable("arrendador") String arrendador) {
@@ -59,6 +65,16 @@ public class ContratoDeAlquilerController {
         return clientesDeArrendadorDTOS;
     }
 
+=======
+    @GetMapping("/{fechaI}/{fechaF}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<ContratoDeAlquilerDTO> ContratosEntreFechas(@PathVariable("fechaI") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate f1, @PathVariable("fechaF") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate f2) {
+        return cdaS.reporte10(f1, f2).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ContratoDeAlquilerDTO.class);
+        }).collect(Collectors.toList());
+    }
+>>>>>>> master
 }
 
 
