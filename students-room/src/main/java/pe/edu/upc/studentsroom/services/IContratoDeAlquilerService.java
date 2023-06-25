@@ -15,11 +15,8 @@ public interface IContratoDeAlquilerService {
     public void delete(int id_contratodealquier);
 
     public ContratoDeAlquiler listId(int id_contratodealquier);
-<<<<<<< HEAD
     List<ContratoDeAlquiler> reporte10(Date f1, Date f2);
 
-    List<ClientesDeArrendadorDTO> reporte07(String arrendador);
-=======
+    List<ClientesDeArrendadorDTO> reporte06();
     List<ContratoDeAlquiler> reporte10(LocalDate f1, LocalDate f2);
->>>>>>> master
 }

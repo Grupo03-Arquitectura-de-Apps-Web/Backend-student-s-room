@@ -6,14 +6,9 @@ import pe.edu.upc.studentsroom.dtos.ClientesDeArrendadorDTO;
 import pe.edu.upc.studentsroom.entities.ContratoDeAlquiler;
 import pe.edu.upc.studentsroom.repositories.IContratoDeAlquilerRepository;
 import pe.edu.upc.studentsroom.services.IContratoDeAlquilerService;
-<<<<<<< HEAD
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-=======
 
 import java.time.LocalDate;
 import java.util.ArrayList;
->>>>>>> master
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,32 +40,29 @@ public class ContratoDeAlquilerServiceImplement implements IContratoDeAlquilerSe
     }
 
     @Override
-    public List<ContratoDeAlquiler> reporte10(LocalDate f1, LocalDate f2) {
-        return cdaR.ContratoEntreFechas(f1,f2);
+    public List<ContratoDeAlquiler> reporte10(Date f1, Date f2) {
+        return null;
     }
 
     @Override
-    public List<ClientesDeArrendadorDTO> reporte07(String arrendador) {
-        List<String[]> clientedearrendador = cdaR.ClientesDeArrendador(arrendador);
+    public List<ClientesDeArrendadorDTO> reporte06() {
+        List<String[]> clientedearrendador = cdaR.ClientesDeArrendador();
         List<ClientesDeArrendadorDTO> c = new ArrayList<>();
         for (String[] data : clientedearrendador) {
             ClientesDeArrendadorDTO dto = new ClientesDeArrendadorDTO();
-            dto.setNombre(data[0]);
-            dto.setFecha_pago(parseDate(data[1]));
-            dto.setFecha_vencimiento(parseDate(data[2]));
-            dto.setArrendador(data[3]);
+            dto.setArrendador(data[0]);
+            dto.setNombre(data[1]);
+            dto.setTelefono((data[2]));
+            dto.setUbicacion((data[3]));
             c.add(dto);
         }
         return c;
     }
-    private Date parseDate(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            return dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+    @Override
+    public List<ContratoDeAlquiler> reporte10(LocalDate f1, LocalDate f2) {
+        return cdaR.ContratoEntreFechas(f1,f2);
     }
+
+
 
 }

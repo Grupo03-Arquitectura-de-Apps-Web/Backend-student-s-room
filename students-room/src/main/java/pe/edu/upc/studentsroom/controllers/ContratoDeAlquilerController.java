@@ -57,15 +57,12 @@ public class ContratoDeAlquilerController {
         ContratoDeAlquiler e=m.map(dto,ContratoDeAlquiler.class);
         cdaS.insert(e);
     }
-<<<<<<< HEAD
 
-    @GetMapping("/reporte07/{arrendador}")
-    public List<ClientesDeArrendadorDTO> ClientesDeArrendador(@PathVariable("arrendador") String arrendador) {
-        List<ClientesDeArrendadorDTO> clientesDeArrendadorDTOS = cdaS.reporte07(arrendador);
+    @GetMapping("/reporte06")
+    public List<ClientesDeArrendadorDTO> ClientesDeArrendador(){
+        List<ClientesDeArrendadorDTO> clientesDeArrendadorDTOS = cdaS.reporte06();
         return clientesDeArrendadorDTOS;
     }
-
-=======
     @GetMapping("/{fechaI}/{fechaF}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<ContratoDeAlquilerDTO> ContratosEntreFechas(@PathVariable("fechaI") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate f1, @PathVariable("fechaF") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate f2) {
@@ -74,9 +71,4 @@ public class ContratoDeAlquilerController {
             return m.map(x, ContratoDeAlquilerDTO.class);
         }).collect(Collectors.toList());
     }
->>>>>>> master
 }
-
-
-        //List<ClientesDeArrendadorDTO> clientesDeArrendadorDTOS = cdaS.reporte07(arrendador);
-        //return clientesDeArrendadorDTOS;
