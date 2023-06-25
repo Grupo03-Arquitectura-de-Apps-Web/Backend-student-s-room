@@ -12,4 +12,9 @@ public interface IEstudianteRepository extends JpaRepository<Estudiante,Integer>
 
     @Query("SELECT e FROM Estudiante e WHERE e.correo_institucional LIKE %:busqueda%")
     List<Estudiante> findByCorreo(@Param("busqueda") String busqueda);
+
+    @Query(value = "SELECT e.nombre, count(m.id_mensaje) from estudiante e \n" +
+            "join mensajes m ON e.id_estudiante = m.id_estudiante \n" +
+            "group by e.nombre ORDER BY COUNT(e.nombre) DESC", nativeQuery = true)
+    List<String[]> getCountMessagesPerStudent();
 }

@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.EstudianteDTO;
 import pe.edu.upc.studentsroom.dtos.PlanDTO;
+import pe.edu.upc.studentsroom.dtos.StudentMessageDTO;
 import pe.edu.upc.studentsroom.entities.Estudiante;
 import pe.edu.upc.studentsroom.services.IEstudianteService;
 
@@ -24,6 +25,7 @@ public class EstudianteController {
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
         eS.insert(e);
+
     }
 
     @GetMapping
@@ -65,5 +67,11 @@ public class EstudianteController {
             ModelMapper m = new ModelMapper();
             return m.map(x,EstudianteDTO.class);
         }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/reporte04")
+    public List<StudentMessageDTO> getCountMessagesPerStudent() {
+        List<StudentMessageDTO> studentMessageDTOs = eS.reporte04();
+        return studentMessageDTOs;
     }
 }
