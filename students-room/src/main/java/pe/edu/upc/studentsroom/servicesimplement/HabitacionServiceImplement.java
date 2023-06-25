@@ -2,6 +2,7 @@ package pe.edu.upc.studentsroom.servicesimplement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.studentsroom.dtos.CantidadPorUniversidadDTO;
 import pe.edu.upc.studentsroom.dtos.DisponiblesDTO;
 import pe.edu.upc.studentsroom.entities.Habitacion;
 import pe.edu.upc.studentsroom.repositories.IHabitacionRepository;
@@ -48,6 +49,19 @@ public class HabitacionServiceImplement implements IHabitacionService {
             dto.setCity(data[0]);
             dto.setDistrict(data[1]);
             dto.setCountDispo(Integer.parseInt(data[2]));
+            roomAvaCount.add(dto);
+        }
+        return roomAvaCount;
+    }
+
+    @Override
+    public List<CantidadPorUniversidadDTO> quantityByUniversity() {
+        List<String[]> roomAva = hR.quantityByUniversity();
+        List<CantidadPorUniversidadDTO> roomAvaCount = new ArrayList<>();
+        for (String[] data : roomAva){
+            CantidadPorUniversidadDTO dto =new CantidadPorUniversidadDTO();
+            dto.setUniversidad(data[0]);
+            dto.setCantidad(Integer.parseInt(data[1]));
             roomAvaCount.add(dto);
         }
         return roomAvaCount;

@@ -25,8 +25,12 @@ public interface IHabitacionRepository extends JpaRepository<Habitacion,Integer>
             "JOIN ciudades c ON d.id_ciudad = c.id_ciudad " +
             "WHERE h.disponibilidad = 'Sí' " +
             "GROUP BY c.nombre_ciudad, d.nombre_distrito " +
-            "ORDER BY count(d.nombre_distrito) DESC",
-            nativeQuery = true)
+            "ORDER BY count(d.nombre_distrito) DESC",nativeQuery = true)
     List<String[]> habitacionesDisponibles();
 
+    @Query(value = "SELECT u.nombre AS universidad, COUNT(*) AS cantidad_habitaciones\n" +
+            "FROM habitaciones h\n" +
+            "INNER JOIN universidades u ON h.id_universidad = u.id_universidad\n" +
+            "GROUP BY u.nombre;",nativeQuery = true)
+    List<String[]>quantityByUniversity();
 }

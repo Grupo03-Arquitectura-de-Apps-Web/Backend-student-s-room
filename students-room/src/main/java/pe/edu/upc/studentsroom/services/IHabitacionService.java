@@ -1,5 +1,6 @@
 package pe.edu.upc.studentsroom.services;
 
+import pe.edu.upc.studentsroom.dtos.CantidadPorUniversidadDTO;
 import pe.edu.upc.studentsroom.dtos.DisponiblesDTO;
 import pe.edu.upc.studentsroom.entities.Distrito;
 import pe.edu.upc.studentsroom.entities.Habitacion;
@@ -17,5 +18,7 @@ public interface IHabitacionService {
     List<Habitacion>habitacionesEntrePrecios(float p1, float p2);
 
     List<DisponiblesDTO>habitacionesDisponibles();
+
+    List<CantidadPorUniversidadDTO>quantityByUniversity();
 
 }
