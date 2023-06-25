@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.studentsroom.dtos.ArrendadorPorPlanDTO;
 import pe.edu.upc.studentsroom.dtos.PlanDTO;
 import pe.edu.upc.studentsroom.entities.Plan;
 import pe.edu.upc.studentsroom.services.IPlanService;
@@ -55,5 +56,9 @@ public class PlanController {
         Plan p = m.map(dto, Plan.class);
         pS.insert(p);
     }
-
+    @GetMapping("/reporte09")
+    public List<ArrendadorPorPlanDTO> ArrendadorPorPlan() {
+        List<ArrendadorPorPlanDTO> ArrendadorPorPlanDTOs = pS.reporte09();
+        return ArrendadorPorPlanDTOs;
+    }
 }
