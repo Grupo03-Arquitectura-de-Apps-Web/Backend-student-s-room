@@ -10,4 +10,10 @@ import java.util.List;
 @Repository
 public interface IMensajeRepository extends JpaRepository<Mensaje,Integer> {
 
+    @Query(value = "SELECT m.estado, COUNT(estado) AS conteo \n" +
+            "FROM mensajes m \n"+
+            "GROUP BY estado \n" +
+            "ORDER BY conteo DESC",
+            nativeQuery = true)
+    List<String[]> ConteodeMensajesporEstado();
 }

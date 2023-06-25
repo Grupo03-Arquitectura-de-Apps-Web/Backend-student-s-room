@@ -4,8 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.studentsroom.dtos.ConteoxEstadoDTO;
 import pe.edu.upc.studentsroom.dtos.MensajeDTO;
-import pe.edu.upc.studentsroom.dtos.StudentMessageDTO;
 import pe.edu.upc.studentsroom.entities.Mensaje;
 import pe.edu.upc.studentsroom.services.IMensajeService;
 
@@ -55,5 +55,9 @@ public class MensajeController {
         Mensaje a = m.map(dto, Mensaje.class);
         mS.insert(a);
     }
-
+    @GetMapping("/reporte05")
+    public List<ConteoxEstadoDTO> getCountMessagesPerStudent() {
+        List<ConteoxEstadoDTO> conteoxestadoDTOs = mS.reporte5();
+        return conteoxestadoDTOs;
+    }
 }
