@@ -2,10 +2,14 @@ package pe.edu.upc.studentsroom.servicesimplement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.studentsroom.dtos.ArrendadorPorPlanDTO;
+import pe.edu.upc.studentsroom.dtos.PlanDTO;
+import pe.edu.upc.studentsroom.dtos.StudentMessageDTO;
 import pe.edu.upc.studentsroom.entities.Plan;
 import pe.edu.upc.studentsroom.repositories.IPlanRepository;
 import pe.edu.upc.studentsroom.services.IPlanService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //Enlazar la capa service con repository
@@ -36,12 +40,18 @@ public class PlanServiceimplement implements IPlanService {
     }
 
     @Override
-    public List<Plan> buscarPlan(String nombre_plan) {
-        return pR.buscarPlan(nombre_plan);
+    public List<ArrendadorPorPlanDTO> reporte09() {
+        List<String[]> result = pR.ArrendadoresPorPlan();
+        List<ArrendadorPorPlanDTO> ArrendadorPorPlanDTOs = new ArrayList<>();
+
+        for (String[] data : result) {
+            ArrendadorPorPlanDTO dto = new ArrendadorPorPlanDTO();
+            dto.setNombre_plan(data[0]);
+            dto.setPrecio(Integer.parseInt(data[1]));
+            dto.setId_arrendador(Integer.parseInt(data[2]));
+            ArrendadorPorPlanDTOs.add(dto);
+        }
+        return ArrendadorPorPlanDTOs;
     }
 
-    @Override
-    public int contador() {
-        return pR.contador();
-    }
 }

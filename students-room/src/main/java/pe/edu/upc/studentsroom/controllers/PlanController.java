@@ -56,18 +56,4 @@ public class PlanController {
         pS.insert(p);
     }
 
-    @PostMapping("/buscador")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public List<PlanDTO> BuscarPlan(@RequestBody String nombre_plan) {
-        return pS.buscarPlan(nombre_plan).stream().map(x->{
-            ModelMapper m = new ModelMapper();
-            return m.map(x,PlanDTO.class);
-        }).collect(Collectors.toList());
-    }
-
-    @GetMapping("/contador")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public int contador(){
-        return pS.contador();
-    }
 }
