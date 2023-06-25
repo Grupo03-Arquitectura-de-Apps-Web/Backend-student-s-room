@@ -56,7 +56,7 @@ public class MensajeController {
         mS.insert(a);
     }
     @GetMapping("/reporte05")
-    public List<ConteoxEstadoDTO> getCountMessagesPerStudent() {
+    public List<ConteoxEstadoDTO> ConteoPorEstado() {
         List<ConteoxEstadoDTO> conteoxestadoDTOs = mS.reporte5();
         return conteoxestadoDTOs;
     }

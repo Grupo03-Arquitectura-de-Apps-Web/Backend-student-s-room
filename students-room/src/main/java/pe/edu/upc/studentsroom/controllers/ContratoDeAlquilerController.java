@@ -3,6 +3,8 @@ package pe.edu.upc.studentsroom.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.studentsroom.dtos.ClientesDeArrendadorDTO;
+import pe.edu.upc.studentsroom.dtos.ConteoxEstadoDTO;
 import pe.edu.upc.studentsroom.dtos.ContratoDeAlquilerDTO;
 import pe.edu.upc.studentsroom.entities.ContratoDeAlquiler;
 import pe.edu.upc.studentsroom.services.IContratoDeAlquilerService;
@@ -50,4 +52,15 @@ public class ContratoDeAlquilerController {
         ContratoDeAlquiler e=m.map(dto,ContratoDeAlquiler.class);
         cdaS.insert(e);
     }
+
+    @GetMapping("/reporte07/{arrendador}")
+    public List<ClientesDeArrendadorDTO> ClientesDeArrendador(@PathVariable("arrendador") String arrendador) {
+        List<ClientesDeArrendadorDTO> clientesDeArrendadorDTOS = cdaS.reporte07(arrendador);
+        return clientesDeArrendadorDTOS;
+    }
+
 }
+
+
+        //List<ClientesDeArrendadorDTO> clientesDeArrendadorDTOS = cdaS.reporte07(arrendador);
+        //return clientesDeArrendadorDTOS;

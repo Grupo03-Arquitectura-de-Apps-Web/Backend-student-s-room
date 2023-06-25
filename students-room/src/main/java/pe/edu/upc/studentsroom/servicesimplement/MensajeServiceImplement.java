@@ -48,6 +48,4 @@ public class MensajeServiceImplement implements IMensajeService {
             conteoxEstadoDTOS.add(dto);
         }
         return conteoxEstadoDTOS;    }
-
-
 }

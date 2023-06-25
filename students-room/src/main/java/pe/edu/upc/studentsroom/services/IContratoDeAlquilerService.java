@@ -1,5 +1,6 @@
 package pe.edu.upc.studentsroom.services;
 
+import pe.edu.upc.studentsroom.dtos.ClientesDeArrendadorDTO;
 import pe.edu.upc.studentsroom.entities.ContratoDeAlquiler;
 
 import java.util.Date;
@@ -14,4 +15,6 @@ public interface IContratoDeAlquilerService {
 
     public ContratoDeAlquiler listId(int id_contratodealquier);
     List<ContratoDeAlquiler> reporte10(Date f1, Date f2);
+
+    List<ClientesDeArrendadorDTO> reporte07(String arrendador);
 }
