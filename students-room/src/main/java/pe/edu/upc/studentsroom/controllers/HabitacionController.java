@@ -3,10 +3,7 @@ package pe.edu.upc.studentsroom.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.studentsroom.dtos.ArrendadorDTO;
-import pe.edu.upc.studentsroom.dtos.DisponiblesDTO;
-import pe.edu.upc.studentsroom.dtos.EstudianteDTO;
-import pe.edu.upc.studentsroom.dtos.HabitacionDTO;
+import pe.edu.upc.studentsroom.dtos.*;
 import pe.edu.upc.studentsroom.entities.Arrendador;
 import pe.edu.upc.studentsroom.entities.Habitacion;
 import pe.edu.upc.studentsroom.services.IHabitacionService;
@@ -67,4 +64,12 @@ public class HabitacionController {
         List<DisponiblesDTO> disponiblesDTOS = hS.habitacionesDisponibles();
         return disponiblesDTOS;
     }
+
+    @GetMapping("/cantidad")
+    public List<CantidadPorUniversidadDTO> quantityByUniversity() {
+        List<CantidadPorUniversidadDTO> cantidadPorUniversidadDTOS = hS.quantityByUniversity();
+        return cantidadPorUniversidadDTOS;
+    }
+
+
 }
