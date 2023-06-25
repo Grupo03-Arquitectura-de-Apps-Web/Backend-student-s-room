@@ -29,7 +29,7 @@ public class EstudianteController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','ARRENDADOR')")
     public List<EstudianteDTO> list(){
         return eS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -44,7 +44,7 @@ public class EstudianteController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE','ARRENDADOR')")
     public EstudianteDTO listId(@PathVariable("id")Integer id){
         ModelMapper m=new ModelMapper();
         EstudianteDTO dto=m.map(eS.listId(id),EstudianteDTO.class);
