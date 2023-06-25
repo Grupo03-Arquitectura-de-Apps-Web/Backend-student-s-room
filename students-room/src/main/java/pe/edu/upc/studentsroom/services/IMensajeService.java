@@ -1,5 +1,6 @@
 package pe.edu.upc.studentsroom.services;
 
+import pe.edu.upc.studentsroom.dtos.StudentMessageDTO;
 import pe.edu.upc.studentsroom.entities.Mensaje;
 
 import java.util.List;

@@ -1,9 +1,11 @@
 package pe.edu.upc.studentsroom.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.studentsroom.dtos.EstudianteDTO;
 import pe.edu.upc.studentsroom.dtos.PlanDTO;
+import pe.edu.upc.studentsroom.dtos.StudentMessageDTO;
 import pe.edu.upc.studentsroom.entities.Estudiante;
 import pe.edu.upc.studentsroom.services.IEstudianteService;
 
@@ -18,13 +20,16 @@ public class EstudianteController {
     @Autowired
     private IEstudianteService eS;
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public void insert (@RequestBody EstudianteDTO dto){
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
         eS.insert(e);
+
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<EstudianteDTO> list(){
         return eS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -33,11 +38,13 @@ public class EstudianteController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable("id")Integer id){
         eS.delete(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE')")
     public EstudianteDTO listId(@PathVariable("id")Integer id){
         ModelMapper m=new ModelMapper();
         EstudianteDTO dto=m.map(eS.listId(id),EstudianteDTO.class);
@@ -45,9 +52,26 @@ public class EstudianteController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'ESTUDIANTE')")
     public void update (@RequestBody EstudianteDTO dto){
         ModelMapper m=new ModelMapper();
         Estudiante e=m.map(dto,Estudiante.class);
         eS.insert(e);
+    }
+
+
+    @GetMapping("/buscador")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<EstudianteDTO> findByCorreo(@RequestParam("busqueda") String busqueda) {
+        return eS.findByCorreo(busqueda).stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x,EstudianteDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/reporte04")
+    public List<StudentMessageDTO> getCountMessagesPerStudent() {
+        List<StudentMessageDTO> studentMessageDTOs = eS.reporte04();
+        return studentMessageDTOs;
     }
 }

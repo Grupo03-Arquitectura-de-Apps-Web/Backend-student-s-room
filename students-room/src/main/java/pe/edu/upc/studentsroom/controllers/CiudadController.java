@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/ciudadades")
+@RequestMapping("/ciudades")
 public class CiudadController {
     @Autowired
     private ICiudadService cS;

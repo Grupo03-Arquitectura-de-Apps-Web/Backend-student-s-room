@@ -8,19 +8,20 @@ import pe.edu.upc.studentsroom.entities.Universidad;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 public class HabitacionDTO {
     private int idHabitacion;
 
-    private TipoHabitacion tipoHabitacion;
-    private float precioHabitacion;
-    private String disponibilidadHabitacion;
+    private TipoHabitacion tipo;
 
+    private float precio;
+    private String disponibilidad;
 
     private Arrendador arrendador;
 
-
     private Distrito distrito;
+    private String ubicacion;
 
     private Universidad universidad;
 
@@ -32,28 +33,28 @@ public class HabitacionDTO {
         this.idHabitacion = idHabitacion;
     }
 
-    public TipoHabitacion getTipoHabitacion() {
-        return tipoHabitacion;
+    public TipoHabitacion getTipo() {
+        return tipo;
     }
 
-    public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
+    public void setTipo(TipoHabitacion tipo) {
+        this.tipo = tipo;
     }
 
-    public float getPrecioHabitacion() {
-        return precioHabitacion;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setPrecioHabitacion(float precioHabitacion) {
-        this.precioHabitacion = precioHabitacion;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
-    public String getDisponibilidadHabitacion() {
-        return disponibilidadHabitacion;
+    public String getDisponibilidad() {
+        return disponibilidad;
     }
 
-    public void setDisponibilidadHabitacion(String disponibilidadHabitacion) {
-        this.disponibilidadHabitacion = disponibilidadHabitacion;
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 
     public Arrendador getArrendador() {
@@ -70,6 +71,14 @@ public class HabitacionDTO {
 
     public void setDistrito(Distrito distrito) {
         this.distrito = distrito;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Universidad getUniversidad() {
