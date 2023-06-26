@@ -1,5 +1,7 @@
 package pe.edu.upc.studentsroom.services;
 
+import pe.edu.upc.studentsroom.dtos.CantidadPorUniversidadDTO;
+import pe.edu.upc.studentsroom.dtos.UniversidadesPorDistritoDTO;
 import pe.edu.upc.studentsroom.entities.Ciudad;
 import pe.edu.upc.studentsroom.entities.Distrito;
 import pe.edu.upc.studentsroom.entities.Habitacion;
@@ -12,4 +14,5 @@ public interface IDistritoService {
     public void delete(int idDistrito);
 
     public Distrito listId(int idDistrito);
+    public List<UniversidadesPorDistritoDTO> quantityByDistrict();
 }

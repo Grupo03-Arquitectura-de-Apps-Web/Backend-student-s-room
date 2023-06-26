@@ -4,12 +4,15 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.studentsroom.dtos.CantidadPorUniversidadDTO;
 import pe.edu.upc.studentsroom.dtos.DistritoDTO;
 import pe.edu.upc.studentsroom.dtos.HabitacionDTO;
+import pe.edu.upc.studentsroom.dtos.UniversidadesPorDistritoDTO;
 import pe.edu.upc.studentsroom.entities.Distrito;
 import pe.edu.upc.studentsroom.entities.Habitacion;
 import pe.edu.upc.studentsroom.services.IDistritoService;
 import pe.edu.upc.studentsroom.services.IHabitacionService;
+import pe.edu.upc.studentsroom.services.IUniversidadService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +22,7 @@ import java.util.stream.Collectors;
 public class DistritoController {
     @Autowired
     private IDistritoService dS;
+    private IUniversidadService pS;
 
     @PostMapping
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -56,5 +60,11 @@ public class DistritoController {
         ModelMapper m = new ModelMapper();
         Distrito a = m.map(dto, Distrito.class);
         dS.insert(a);
+    }
+
+    @GetMapping("/quantityByDisctrict")
+    public List<UniversidadesPorDistritoDTO> quantityByDistrict() {
+        List<UniversidadesPorDistritoDTO> universidadesPorDistritoDTOS = dS.quantityByDistrict();
+        return universidadesPorDistritoDTOS;
     }
 }

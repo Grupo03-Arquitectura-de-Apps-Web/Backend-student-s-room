@@ -2,14 +2,19 @@ package pe.edu.upc.studentsroom.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.studentsroom.dtos.CantidadPorUniversidadDTO;
+import pe.edu.upc.studentsroom.dtos.ConteoxEstadoDTO;
 import pe.edu.upc.studentsroom.dtos.TipoHabitacionDTO;
 import pe.edu.upc.studentsroom.dtos.UniversidadDTO;
 import pe.edu.upc.studentsroom.entities.TipoHabitacion;
 import pe.edu.upc.studentsroom.entities.Universidad;
 import pe.edu.upc.studentsroom.services.IUniversidadService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -52,4 +57,5 @@ public class UniversidadController {
         Universidad p = m.map(dto, Universidad.class);
         pS.insert(p);
     }
+
 }
